@@ -47,18 +47,22 @@ const sampleQuestions = [
   },
 ];
 
-export function QuestionList() {
+interface QuestionListProps {
+  questions?: any[];
+}
+
+export function QuestionList({ questions = sampleQuestions }: QuestionListProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-foreground">Recent Questions</h2>
         <div className="flex items-center space-x-2">
-          <span className="text-sm text-muted-foreground">{sampleQuestions.length} questions</span>
+          <span className="text-sm text-muted-foreground">{questions.length} questions</span>
         </div>
       </div>
       
       <div className="space-y-4">
-        {sampleQuestions.map((question) => (
+        {questions.map((question) => (
           <QuestionCard key={question.id} {...question} />
         ))}
       </div>
